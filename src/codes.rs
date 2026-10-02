@@ -2,6 +2,16 @@
 //! (USFA, `nfirs_spec_tables_2013.xls`, public domain).
 //! Generated from the spreadsheet; looked up by linear scan (tables are small).
 
+/// Description for `code`, or "" if unknown. Plus-one codes (a fourth,
+/// locally defined digit) fall back to their three-digit national parent.
+pub fn describe(table: &'static [(&'static str, &'static str)], code: &str) -> &'static str {
+    let code = code.trim();
+    let find = |c: &str| table.iter().find(|(k, _)| *k == c).map(|(_, d)| *d);
+    find(code)
+        .or_else(|| code.get(..3).filter(|_| code.len() == 4).and_then(find))
+        .unwrap_or("")
+}
+
 pub static INCIDENT_TYPE: &[(&str, &str)] = &[
     ("100", "Fire, other"),
     ("110", "Structure fire, other (conversion only)"),

@@ -146,15 +146,15 @@ fully specified and frozen, so a small, testable, offline tool covers the gap.
 It does not give advice. It only counts and decodes the department's own
 records.
 
-**Build status (review, unattended):** the verdict still stands, but the
-build is unfinished. Only the input readers (`src/txn.rs`, `src/pdr.rs`,
-`src/input.rs`) and code tables exist. The `afg`, `incidents` and `summary`
-commands, the fixtures and the success criteria above are not implemented
-or met. The AFG rule "leave aid-given responses out of the call volume" is
-not backed by any cited source and must be checked against the AFG
-checklist before `afg` is written. Code ranges confirmed from FEMA checklist
-text: structure 111-123, vehicle 130-138, vegetation 140-143, motor-vehicle
-accidents 322-324, vehicle extrications 352, rescues 300, 351, 353-381.
+**Build status:** the `afg`, `incidents` and `summary` commands are
+implemented and tested against hand-checked fixtures, and a transaction
+file and a public-data folder holding the same incidents give identical AFG
+tables. The aid-given exclusion is confirmed by the FY2025 AFG Application
+Checklist (May 2026), Table 7: "Include only those alarms which your
+organization was a primary responder and not second due or giving mutual
+aid." Record layouts were checked against NFIRS 5.0 Design Documentation
+2015.1 (Tables 3-7 to 3-10, 1100 and 1300). Not yet tested on a real
+department export.
 
 ## Also considered
 

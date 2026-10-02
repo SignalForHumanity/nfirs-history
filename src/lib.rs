@@ -5,4 +5,5 @@ pub mod codes;
 pub mod input;
 pub mod model;
 pub mod pdr;
+pub mod report;
 pub mod txn;
